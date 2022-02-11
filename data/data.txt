@@ -1,0 +1,22 @@
+{
+     "Classrooms": {
+          "labs": [
+               "a2"
+          ],
+          "lectures": [
+               "a1"
+          ]
+     },
+     "Classes": [
+          {
+               "Subject": "programming",
+               "Teacher": "ahmad",
+               "Group": [
+                    "2"
+               ],
+               "Type": "lab",
+               "Duration": "1",
+               "Classroom": "lab"
+          }
+     ]
+}

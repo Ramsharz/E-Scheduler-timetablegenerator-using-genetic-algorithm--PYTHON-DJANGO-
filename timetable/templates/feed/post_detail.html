@@ -1,0 +1,254 @@
+{% extends "feed/layout.html" %} {% load static %} {% load crispy_forms_tags %}
+{% block searchform %}
+<form
+  class="form-inline my-2 my-lg-0 ml-5"
+  action="{% url 'search_posts' %}"
+  method="get"
+>
+  <input name="p" type="text" placeholder="Search posts by tags.." />
+  <button class="btn btn-success my-2 my-sm-0 ml-4" type="submit">
+    Search
+  </button>
+</form>
+{% endblock searchform %}
+{% block questionform %}
+<form
+  class="form-inline my-2 my-lg-0 ml-5"
+  action="{% url 'question' %}"
+  method="post"
+>
+{% csrf_token %}
+  <input name="question" type="text" placeholder="Ask question.." />
+  <button class="btn btn-success my-2 my-sm-0 ml-4" type="submit">
+    Ask Question
+  </button>
+</form>
+{% endblock questionform %} 
+ {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <a href="{{ post.user_name.profile.get_absolute_url }}"
+            ><img
+              src="{{ post.user_name.profile.image.url }}"
+              class="rounded-circle"
+              width="30"
+              height="30"
+              alt=""
+          /></a>
+          <a
+            class="text-dark"
+            href="{{ post.user_name.profile.get_absolute_url }}"
+            ><b>{{ post.user_name }}</b></a
+          >
+          <br /><small class="text-muted"
+            >Posted on {{ post.date_posted }}</small
+          >
+          <br /><br />
+          <p class="card-text text-dark">{{ post.description }}</p>
+        </div>
+        <a href="{{ post.pic.url }}"
+          ><img class="card-img-top" src="{{ post.pic.url }}" alt=""
+        /></a>
+        {% if post.tags %}
+        <br />
+        <p class="text-danger ml-3">
+          <b>Tags: <i>{{ post.tags }}</i></b>
+        </p>
+        {% endif %}
+        <div class="card-footer">
+          <button class="btn btn-white mr-3 like" id="{{ post.id }}">
+            {% if is_liked %}
+            <a
+              href="{% url 'post-like' %}"
+              style="color: red"
+              id="likebtn{{ post.id }}"
+            >
+              Unlike | {{post.likes.count}}</a
+            >
+            {% else %}
+            <a
+              href="{% url 'post-like' %}"
+              style="color: green"
+              id="likebtn{{ post.id }}"
+            >
+              Like | {{post.likes.count}}</a
+            >
+            {% endif %}
+          </button>
+		  <button class="btn btn-outline-info mr-3" onclick="commentToggle({{ post.id }})"
+            >Comments | {{ post.details.count }}</button
+          >
+
+          {% if post.user_name == user %}
+          <a
+            class="btn btn-outline-info mr-3"
+            href="{% url 'post-update' post.id %}"
+            >Update</a
+          >
+          <a
+            class="btn btn-outline-danger"
+            href="{% url 'post-delete' post.id %}"
+            >Delete</a
+          >
+          {% endif %}
+		  
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card card-signin my-5 comment-{{ post.id }}" h="h" style="display:none">
+        <div class="card-body">
+          <form action="{% url 'new-comment' pk=post.id %}" onsubmit="submit_form({{ post.id }})" class="form-signin form-{{ post.id }} form-comment" method="POST" >
+            {% csrf_token %}
+            <fieldset class="form-group">
+              <br />
+              {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+              <button
+                class="btn btn-lg btn-primary btn-block text-uppercase"
+                type="submit" 
+              >
+                Comment</button
+              ><br />
+            </div>
+          </form>
+        </div>
+      </div>
+	  
+	  <div class="card card-signin my-5 comment-{{ post.id }} comment{{post.id}}" h="h" style="display:none">
+        {% if post.details.all %}
+		{% for detail in post.details.all %}
+        <div class="card-body">
+          <a href="{{ detail.username.profile.get_absolute_url }}">
+            <img
+              src="{{ detail.username.profile.image.url }}"
+              class="rounded-circle"
+              width="30"
+              height="30"
+              alt=""
+            />
+          </a>
+          <a
+            class="text-dark"
+            href="{{ detail.username.profile.get_absolute_url }}"
+            ><b>{{ detail.username }}</b></a
+          >
+          <br /><small>{{ detail.comment_date }}</small><br /><br />
+          <p class="card-text text-dark">{{ detail.comment }}</p>
+        </div>
+        <hr class="my-1" />
+        {% endfor %}
+		
+	  
+      {% else %}
+      <p>No comments to show!</p>
+      {% endif %}
+	  <div class="card-body new-{{ post.id }}" h="h" style="display:none">
+          <a href="{{ post.details.all.0.username.profile.get_absolute_url }}">
+            <img
+              src="{{ post.details.all.0.username.profile.image.url }}"
+              class="rounded-circle"
+              width="30"
+              height="30"
+              alt=""
+            />
+          </a>
+          <a
+            class="text-dark"
+            href="{{ post.details.all.0.username.profile.get_absolute_url }}"
+            ><b>{{ user }}</b></a
+          >
+          <br /><small>now</small><br /><br />
+          <p class="card-text text-dark new-comment-{{ post.id }}"></p>
+        </div>
+		<hr class="my-1" />
+		</div>
+
+        </div>
+      </div>
+	  
+    </div>
+  </div>
+  
+</div>
+
+
+{% endblock content %} 
+
+{% block jsfiles %}
+<script>
+	function commentToggle(id) {
+		if ($(".comment-"+id).attr("h") ==="h"){
+			$(".comment-"+id).show('slow');
+			$(".comment-"+id).attr("h","s");
+			}
+		else{
+		$(".comment-"+id).hide('slow');
+		$(".comment-"+id).attr("h","h");
+		}
+		
+		
+	}
+  $(".like").click(function (e) {
+    var id = this.id;
+    var href = $(".like").find("a").attr("href");
+    e.preventDefault();
+
+    $.ajax({
+      url: href,
+      data: {
+        likeId: id,
+      },
+      success: function (response) {
+        if (response.liked) {
+          $("#likebtn" + id).html("Unlike");
+          $("#likebtn" + id).css("color", "red");
+        } else {
+          $("#likebtn" + id).html("Like");
+          $("#likebtn" + id).css("color", "green");
+        }
+      },
+    });
+  });
+function submit_form(id){
+
+    $(".form-"+id).submit(function(event) {
+	var element = $('.new-'+id).clone().first();
+
+	element.removeClass('new-'+id);
+        var commentForm = $(this);
+        // Send the data using post
+		$.ajax({
+        type: "POST",
+        url: commentForm.attr('action'),
+        data: commentForm.serialize(),
+        success: function(data) {
+            console.log(data.detail.id,data.detail.comment);
+			
+			element.show("slow");
+			console.log('commented');
+			
+			element.children().last().text(data.detail.comment);
+			element.appendTo('.comment'+data.detail.id);
+        }   
+     }); 
+        event.stopImmediatePropagation();
+    });
+}
+$(document).ready(function(){
+        // Stop form from submitting normally
+$('.form-comment').bind('submit', function (event) {
+    event.preventDefault();
+	
+});
+
+});
+	 
+</script>
+{% endblock jsfiles %}

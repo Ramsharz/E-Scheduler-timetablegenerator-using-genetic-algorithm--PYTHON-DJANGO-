@@ -1,0 +1,32 @@
+{% extends "indexlogout.html" %} {% load static %} {% load crispy_forms_tags %} 
+{% block content %}
+
+<div style="display:flex;margin-left:20%;margin-bottom:500px">
+    <h2 class="card-title text-center">
+        Time Table Scheduler
+    </h2>
+    <div class="btn-group" style="margin-left: 30px;">
+      <button type="button" class="btn btn-info" aria-haspopup="true" aria-expanded="false" disabled="true">
+    Select Semester
+    </button>
+    {% for i in '12345678'|make_list %}
+    <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {{i}}
+    </button>
+        <div class="dropdown-menu">
+            {% for j in 'ABCDE'|make_list %}
+            <a class="dropdown-item" href="/timetablestudent/{{ i }}/{{ j }}/">Section {{ j }}</a
+      >
+      {% endfor %}
+    </div>
+    
+  
+  
+  {% endfor %}
+  
+</div>
+
+{% endblock %}
+
+

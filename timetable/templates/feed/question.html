@@ -1,0 +1,72 @@
+{% extends "feed/layout.html" %} {% load static %} {% block searchform %}
+<form
+  class="form-inline my-2 my-lg-0 ml-5"
+  action="{% url 'search_users' %}"
+  method="get"
+>
+  <input name="q" type="text" placeholder="Search users.." />
+  <button class="btn btn-success my-2 my-sm-0 ml-4" type="submit">
+    Search
+  </button>
+</form>
+{% endblock searchform %} 
+{% block questionform %}
+<form
+  class="form-inline my-2 my-lg-0 ml-5"
+  action="{% url 'question' %}"
+  method="post"
+>
+{% csrf_token %}
+  <input name="question" type="text" placeholder="Ask question.." />
+  <button class="btn btn-success my-2 my-sm-0 ml-4" type="submit">
+    Ask Question
+  </button>
+</form>
+{% endblock questionform %} 
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      {% if candidates %}
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          {% for user_p in candidates %}
+		
+          <a href="{{ user_p.get_absolute_url }}"
+            ><img
+              src="{{ user_p.image.url }}"
+              class="rounded mr-2"
+              width="40"
+              height="40"
+              alt=""
+          /></a>
+          <a class="text-dark" href="{{ user_p.get_absolute_url }}"
+            ><b>{{ user_p }}</b></a
+          ><br/>
+					<span class="heading"><b>Evaluation: </b></span>
+					<span> {{ user_p.evaluation }} </span>
+		  <br/>
+					<span class="heading"><b>Tags: </b></span>
+					<span class="description"> {{ user_p.tag1 }} </span>
+					<span class="description">{{ user_p.tag2 }} </span>
+					<span class="description">{{ user_p.tag3 }} </span>
+					<span class="description">{{ user_p.tag4 }} </span>
+					<span class="description">{{ user_p.tag5 }}</span>
+          <br /><br /><br/>
+
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+	  <br/><br/>
+      <h5>
+        <i
+          >No match found for your question. 
+          Please try again!</i
+        >
+      </h5>
+      {% endif %}
+    </div>
+  </div>
+  {% endblock content %}
+</div>

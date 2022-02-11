@@ -1,0 +1,7 @@
+{
+	"Classrooms": {
+		"r": ["r2", "r3", "r4", "p5", "U7"],
+		"s": ["a1", "z9", "a10"]
+	},
+	"Classes": [{"Subject": "Programming", "Type": "V", "Teacher": "Ali", "Group": ["101"], "Classroom": "r", "Duration": "2"}, {"Subject": "Chemistry", "Type": "L", "Teacher": "Abdullah", "Group": ["101"], "Classroom": "r", "Duration": "2"}, {"Subject": "Physics", "Type": "P", "Teacher": "Ahmad", "Group": ["101", "102"], "Classroom": "r", "Duration": "2"}, {"Subject": "Mathematics", "Type": "V", "Teacher": "Zubair", "Group": ["101", "102"], "Classroom": "r", "Duration": "3"}]
+}

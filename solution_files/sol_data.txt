@@ -1,0 +1,142 @@
+-------------------------- STATISTICS --------------------------
+
+Hard constraints satisfied: 100.00 %
+Soft constraints satisfied: 100.00 %
+
+TOTAL empty space for all GROUPS and all days: 1
+MAX empty space for GROUP in day: 1
+AVERAGE empty space for GROUPS per week: 0.25
+
+TOTAL empty space for all TEACHERS and all days: 2
+MAX empty space for TEACHER in day: 2
+AVERAGE empty space for TEACHERS per week: 0.50
+
+Free term -> break exists for whole week from 12:00 to 01:00
+
+--------------------------- SCHEDULE ---------------------------
+
+Class 10
+Teacher: abdullah 
+Subject: IT 
+Groups: 1A 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS105 
+Time: Thursday 9
+
+Class 6
+Teacher: abdullah 
+Subject: DJANGO 
+Groups: 4B 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS107 
+Time: Wednesday 1
+
+Class 7
+Teacher: abdullah 
+Subject: IT 
+Groups: 1A 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS107 
+Time: Wednesday 2
+
+Class 8
+Teacher: ramsha 
+Subject: DJANGO 
+Groups: 4C 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: cs102 
+Time: Thursday 1
+
+Class 2
+Teacher: ramsha 
+Subject: OOP 
+Groups: 1A 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS109 
+Time: Wednesday 1
+
+Class 11
+Teacher: faiza 
+Subject: Chemistry 
+Groups: 1A 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS108 
+Time: Thursday 10
+
+Class 13
+Teacher: ramsha 
+Subject: OOP 
+Groups: 1A 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: cs102 
+Time: Friday 10
+
+Class 1
+Teacher: Ali 
+Subject: maths 
+Groups: 1A 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS104 
+Time: Thursday 11
+
+Class 9
+Teacher: ramsha 
+Subject: DJANGO 
+Groups: 4C 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS109 
+Time: Thursday 9
+
+Class 5
+Teacher: Ali 
+Subject: maths 
+Groups: 1A 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS104 
+Time: Thursday 1
+
+Class 4
+Teacher: ramsha 
+Subject: DJANGO 
+Groups: 4A 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS107 
+Time: Thursday 11
+
+Class 3
+Teacher: faiza 
+Subject: Chemistry 
+Groups: 1A 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: cs103 
+Time: Thursday 2
+
+Class 0
+Teacher: ramsha 
+Subject: DJANGO 
+Groups: 4A 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS104 
+Time: Thursday 2
+
+Class 12
+Teacher: abdullah 
+Subject: DJANGO 
+Groups: 4B 
+Type: lecture 
+Duration: 1 hour(s)
+Classroom: CS105 
+Time: Thursday 1

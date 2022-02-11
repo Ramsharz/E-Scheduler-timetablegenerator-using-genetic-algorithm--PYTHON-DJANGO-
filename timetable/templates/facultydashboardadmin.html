@@ -1,0 +1,18 @@
+{% extends "index.html" %} {% load static %} {% load crispy_forms_tags %} {% block content %}
+<div style="display:flex;margin-left:20%;margin-bottom:500px">
+    <h1>
+        Time Table Scheduler
+    </h1>
+    <div class="btn-group" style="margin-left: 100px;">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Select Faculty Member
+    </button>
+        <div class="dropdown-menu">
+            {% for teacher in teachers %}
+            <a class="dropdown-item" href="/facultyadmin/{{teacher.name}}/">{{teacher.name}}</a
+      >
+      {% endfor %}
+    </div>
+  </div>
+  {% endblock %}
+</div>

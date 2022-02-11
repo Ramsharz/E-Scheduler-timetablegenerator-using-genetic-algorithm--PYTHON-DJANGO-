@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://i.ibb.co/XYRpbzr/Krowten-logo.png"
+    />
+    <!-- Bootstrap CSS  -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://dl.dropboxusercontent.com/s/ecyb1drs5j1jyjf/styles.css?dl=0"
+    />
+    {% block cssfiles %}{% endblock cssfiles %}
+    <title>Krowten Project</title>
+	<style>
+		.navbar {
+		background-color:#ce952c;
+		height:70px;
+		display: flex;
+		justify-content: space-between;
+		}
+		.navbar-nav a {
+		color:white !important;
+		}
+		.nav-item {
+		display:flex;
+		flex:none;
+		height:fit-content;
+		}
+	</style>
+  </head>
+  <body style="font-size: 1.1rem">
+ 
+    <div class="container">{% block content %}{% endblock content %}</div>
+
+    <!-- JS Files -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    {% block jsfiles %}{% endblock jsfiles %}
+  </body>
+</html>
